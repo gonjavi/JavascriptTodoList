@@ -1,0 +1,27 @@
+{
+  "name": "javascripttodolist",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gonjavi/JavascriptToDoList.git"
+  },
+  "keywords": [],
+  "author": "Gonzalo Javier Mancilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gonjavi/JavascriptToDoList/issues"
+  },
+  "homepage": "https://github.com/gonjavi/JavascriptToDoList#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
