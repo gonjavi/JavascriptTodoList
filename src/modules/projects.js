@@ -1,11 +1,12 @@
-export default function projects() {
+let projectsModule = (function(){
+  
   let myprojects = [
     {
-      name: 'Project 1',
+      name: 'Project1',
       todos: [
         {
           title: 'todo 1',
-          description: "First todo ",
+          description: 'First todo',
           duedate: '02/03/2020'
         },
         {
@@ -15,13 +16,13 @@ export default function projects() {
         },
         {
           title: 'todo 3',
-          description: "Third todo ",
+          description: 'Third todo',
           duedate: '02/03/2020'
         }
       ]
     },
     {
-      name: 'Project 2',
+      name: 'Project2',
       todos: [
         {
           title: 'todo 1',
@@ -31,7 +32,7 @@ export default function projects() {
       ]
     },
     {
-      name: "Project 3",
+      name: "Project3",
       todos: [
         {
           title: 'todo 1',
@@ -41,24 +42,25 @@ export default function projects() {
       ]
     },
   ];
-
-  /* const project = document.createElement('div');
-  project.className = 'container';
+  return{
+    showProjects: function(){
+      return myprojects;
+    },
+    addNewProject: function(){
+      var proLength = 0;
+      
+      proLength = myprojects.length;
+      proLength += 1;    
+    
+      var newProject = { };
+      newProject.name = 'Project'+proLength;
+      newProject.todos = [];
+      
+      myprojects.push(newProject);
+    }
+  }
   
-  project.innerHTML = `
-    <div class="container">
-      <h2>Proyects</h2>
-      <div class="row">
-        <div class="col l1"></div>
-        <ul class="col l11">
-          <li><a href="#" id=''><h5>project 1</h5></a></li>
-          <li><a href="#" id=''><h5>project 1</h5></a></li>
-          <li><a href="#" id=''><h5>project 1</h5></a></li>
-          <li><a href="#" id=''><h5>project 1</h5></a></li>
-          <li><a href="#" id=''><h5>project 1</h5></a></li>
-        </ul>
-      </div>
-    </div>   `;
- */
-return myprojects;
-}
+  
+})();
+
+export { projectsModule }
