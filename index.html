@@ -29,8 +29,57 @@
         <main id="content">
           <div class="container">
               <div class="row" id="clean">
-                <div class="col l2"></div>
-                  <div class="col l5" id="todos"><h4 id="protitle"></h4></div>
+               
+                  <div class="col l6" id="todos"><h4 id="protitle"></h4></div>
+                  <div class="col l6">
+                    <form class="row">
+                      <div class=""">
+                         <!-- Dropdown Trigger -->
+                        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Choose project To add new Todo</a>
+
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content' >
+                          
+                        </ul>
+                      </div>
+
+                        <div class="input-field col s8 row">
+                          <input type="text" id="title" class="autocomplete">
+                          <label for="title">title</label>                       
+                        </div>
+                        <div class="input-field col s8 row">
+                            <input type="text" id="description" class="autocomplete">
+                            <label for="description">description</label>                         
+                        </div>
+                        <div class="input-field col s8 row">
+                            <input type="text" id="duedate" class="datepicker">
+                            <label for="duedate">Due date</label>                         
+                        </div>
+                        <div class="input-field col s8 row">
+                          <p>
+                            <label>
+                              <input class="priority" name="group1" type="radio" value="Important and urgent" checked />
+                              <span>Important and urgent</span>
+                            </label>
+                          </p>
+                          <p>
+                            <label>
+                              <input class="priority" name="group1" type="radio" value="Important but not urgent" />
+                              <span>Important but not urgent</span>
+                            </label>
+                          </p> 
+                          <p>
+                            <label>
+                              <input class="priority" name="group1" type="radio" value="Not urgent" />
+                              <span>Not urgent</span>
+                            </label>
+                            </p>                       
+                        </div>
+                        <button class="col s5 btn waves-effect waves-light" id="submit" type="submit" name="action">Submit
+                            <i class="material-icons right"></i>
+                        </button>  
+                      </form>
+                  </div>
                 </div>
           </div>
         </main>
