@@ -1,4 +1,4 @@
-export default function addTodos() {
+export default function addTodosForm() {
   const addpro = document.createElement('div');
   addpro.className = 'container';
   addpro.innerHTML = `

@@ -5,6 +5,11 @@ import { projectsModule } from './modules/projects';
 document.addEventListener('DOMContentLoaded', function() {
   var date = document.querySelector('.datepicker');
   var instances = M.Datepicker.init(date, {});
+  console.log(date);
+});
+document.addEventListener('DOMContentLoaded', function() {
+  var chooseproject = document.querySelectorAll('.dropdown-trigger');
+  var instances = M.Dropdown.init(chooseproject, []);
 });
 
 document.getElementById('addpro').onclick = () => {
@@ -72,13 +77,43 @@ function todos(index) {
     
     let p1 = document.createElement('p');
     let p2 = document.createElement('p');
+    let p3 = document.createElement('p');
     p1.innerHTML = todos[i].description;
     p2.innerHTML = todos[i].duedate;
+    p3.innerHTML = todos[i].priority;
     todoInfo.appendChild(title);
     todoInfo.appendChild(p1);
     todoInfo.appendChild(p2);
+    todoInfo.appendChild(p3);
     
     showtodos.appendChild(todoInfo);
 
   }
 }
+
+
+// list of projects dropdown
+
+ let proclist = document.getElementById('dropdown1');
+ projectLisLi();
+ 
+function projectLisLi() {
+
+ for (let i=0; i < proyectos.length; i++){
+  let li = document.createElement('li');
+  //li.innerHTML = 'Project'+i;
+  let a = document.createElement('a');
+  a.innerHTML = 'Project'+i;
+  li.appendChild(a);
+  proclist.appendChild(li);
+ }
+}
+
+
+// create a todo
+
+document.getElementById('submit').onclick = () => {
+
+}
+
+projectsModule.addNewTodo(2, 'Todo Good', 'very good', '12/04/2020', 'Important');

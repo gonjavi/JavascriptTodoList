@@ -7,17 +7,20 @@ let projectsModule = (function(){
         {
           title: 'next week',
           description: 'First todo project 1',
-          duedate: '02/03/2020'
+          duedate: '02/03/2020',
+          priority: 'Important but not urgent'
         },
         {
           title: 'Next month',
           description: 'Second todo project 1',
-          duedate: '02/03/2020'
+          duedate: '02/03/2020',
+          priority: 'Important and urgent'
         },
         {
           title: 'Next year',
           description: 'Third todo project 1',
-          duedate: '02/03/2020'
+          duedate: '02/03/2020',
+          priority: 'Important'
         }
       ]
     },
@@ -27,7 +30,8 @@ let projectsModule = (function(){
         {
           title: 'Todo 1 P2',
           description: 'First todo Project 2',
-          duedate: '02/03/2020'
+          duedate: '02/03/2020',
+          priority: 'Important'
         }
       ]
     },
@@ -37,7 +41,8 @@ let projectsModule = (function(){
         {
           title: 'Todo 1 P3',
           description: 'First todo Project 3',
-          duedate: '02/03/2020'
+          duedate: '02/03/2020',
+          priority: 'Important and urgent'
         }
       ]
     },
@@ -62,11 +67,18 @@ let projectsModule = (function(){
       let todos = {};
       todos = myprojects[projectparent].todos;
      
-      //console.log(todos);
       return todos;
     },
-    addNewTodo: function() {
+    addNewTodo: function(project, title, description, duedate, priority) {
+      var newTodo = { };
+      newTodo.title = title;
+      newTodo.description = description;
+      newTodo.duedate = duedate;
+      newTodo.priority = priority;
       
+      myprojects[project];
+      myprojects.push(newTodo);
+      console.log(myprojects);
     }
   }
   
