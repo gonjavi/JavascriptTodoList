@@ -1,4 +1,4 @@
-export default function addProject() {
+export default function addTodos() {
   const addpro = document.createElement('div');
   addpro.className = 'container';
   addpro.innerHTML = `

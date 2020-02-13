@@ -5,18 +5,18 @@ let projectsModule = (function(){
       name: 'Project1',
       todos: [
         {
-          title: 'todo 1',
-          description: 'First todo',
+          title: 'next week',
+          description: 'First todo project 1',
           duedate: '02/03/2020'
         },
         {
-          title: 'todo 2',
-          description: 'Second todo ',
+          title: 'Next month',
+          description: 'Second todo project 1',
           duedate: '02/03/2020'
         },
         {
-          title: 'todo 3',
-          description: 'Third todo',
+          title: 'Next year',
+          description: 'Third todo project 1',
           duedate: '02/03/2020'
         }
       ]
@@ -25,8 +25,8 @@ let projectsModule = (function(){
       name: 'Project2',
       todos: [
         {
-          title: 'todo 1',
-          description: 'First todo P2',
+          title: 'Todo 1 P2',
+          description: 'First todo Project 2',
           duedate: '02/03/2020'
         }
       ]
@@ -35,18 +35,18 @@ let projectsModule = (function(){
       name: "Project3",
       todos: [
         {
-          title: 'todo 1',
-          description: 'First todo P2',
+          title: 'Todo 1 P3',
+          description: 'First todo Project 3',
           duedate: '02/03/2020'
         }
       ]
     },
   ];
   return{
-    showProjects: function(){
+    showProjects: function() {
       return myprojects;
     },
-    addNewProject: function(){
+    addNewProject: function() {
       var proLength = 0;
       
       proLength = myprojects.length;
@@ -54,9 +54,19 @@ let projectsModule = (function(){
     
       var newProject = { };
       newProject.name = 'Project'+proLength;
-      newProject.todos = [];
+      newProject.todos = {};
       
       myprojects.push(newProject);
+    },
+    showTodos: function(projectparent) {
+      let todos = {};
+      todos = myprojects[projectparent].todos;
+     
+      //console.log(todos);
+      return todos;
+    },
+    addNewTodo: function() {
+      
     }
   }
   

@@ -1,6 +1,6 @@
 import './style.css';
-import mainSection from './mainSection';
 import { projectsModule } from './modules/projects';
+
 
 document.addEventListener('DOMContentLoaded', function() {
   var date = document.querySelector('.datepicker');
@@ -13,27 +13,17 @@ document.getElementById('addpro').onclick = () => {
 };
   const showprojects = document.getElementById('showprojects').getElementsByTagName('ul')[0];
   let proyectos = projectsModule.showProjects();
-  //projectsModule.addNewProject(); 
-
-
-  function component() {
-       for (let i=0; i< proyectos.length; i++){
-          
-          let newA = document.createElement('a');
-          newA.innerHTML = proyectos[i].name;
-          let n = document.createElement('li');
-          n.appendChild(newA);
-          n.id = [proyectos[i].name];
-          n.style.color =' black';
-          showprojects.appendChild(n);
-      }
-      
-     // const myContent = document.getElementById('content');
-      //myContent.appendChild(mainSection());
-      //myContent.appendChild(myFooter());
-
-    
-    //return showprojects;
+  
+  function defaultProjects() {
+    for (let i=0; i< proyectos.length; i++){
+      let newA = document.createElement('a');
+      newA.innerHTML = proyectos[i].name;
+      let n = document.createElement('li');
+      n.appendChild(newA);
+      n.id = i;
+      n.style.color =' black';
+      showprojects.appendChild(n);
+    }
   }
   function addNewProjecttoList() {
     var proyectos = projectsModule.showProjects();
@@ -41,15 +31,54 @@ document.getElementById('addpro').onclick = () => {
     l = proyectos.length -1;
     l++;
     var newA = document.createElement('a');
-    newA.innerHTML = 'Projects'+[l];
+    newA.innerHTML = 'Project'+[l];
     let n = document.createElement('li');
     n.appendChild(newA);
-    n.id = 'Projects'+[l];
+    n.id = l;
     n.style.color =' black';
     showprojects.appendChild(n);
     showprojects.removeChild(showprojects.childNodes[0]);
   }
 
-//document.body.append(component());
+  defaultProjects();
 
-component();
+
+for (let i=0; i< proyectos.length; i++){
+  let index = 'Project'+i;
+  document.getElementById(i).onclick = () => {
+     if (todoInfo.hasChildNodes()){
+      let count = todoInfo.childElementCount;
+      while(todoInfo.hasChildNodes()){
+      todoInfo.removeChild(todoInfo.childNodes[0]);
+      }
+    } 
+    todos(i);
+  
+  };
+}
+const showtodos = document.getElementById('todos');
+let todoInfo = document.createElement('div');
+
+function todos(index) {
+  let todos = projectsModule.showTodos(index);
+  
+  let divprotitle = document.getElementById('protitle');
+  divprotitle .innerHTML = 'Project'+[index+1];
+  
+  
+  for (let i=0; i< todos.length; i++){
+    let title = document.createElement('h5');
+    title.innerHTML = todos[i].title;
+    
+    let p1 = document.createElement('p');
+    let p2 = document.createElement('p');
+    p1.innerHTML = todos[i].description;
+    p2.innerHTML = todos[i].duedate;
+    todoInfo.appendChild(title);
+    todoInfo.appendChild(p1);
+    todoInfo.appendChild(p2);
+    
+    showtodos.appendChild(todoInfo);
+
+  }
+}
