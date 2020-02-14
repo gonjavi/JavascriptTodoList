@@ -114,9 +114,9 @@ function projectLisLi() {
   } 
  for (let i=0; i < proyectoss.length; i++){
   let li = document.createElement('li');
-  //li.innerHTML = 'Project'+i;
+  let p = i +1;
   let a = document.createElement('a');
-  a.innerHTML = 'Project'+i;
+  a.innerHTML = 'Project'+p;
   li.appendChild(a);
   proclist.appendChild(li);
  }
