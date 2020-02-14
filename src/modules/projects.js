@@ -1,5 +1,5 @@
 let projectsModule = (function(){
-  
+  let todos = {};
   let myprojects = [
     {
       name: 'Project1',
@@ -7,19 +7,19 @@ let projectsModule = (function(){
         {
           title: 'next week',
           description: 'First todo project 1',
-          duedate: '02/03/2020',
+          duedate: 'Mar 19, 2020',
           priority: 'Important but not urgent'
         },
         {
           title: 'Next month',
           description: 'Second todo project 1',
-          duedate: '02/03/2020',
+          duedate: 'Apr 19, 2020',
           priority: 'Important and urgent'
         },
         {
           title: 'Next year',
           description: 'Third todo project 1',
-          duedate: '02/03/2020',
+          duedate: 'Mar 19, 2021',
           priority: 'Important'
         }
       ]
@@ -30,7 +30,7 @@ let projectsModule = (function(){
         {
           title: 'Todo 1 P2',
           description: 'First todo Project 2',
-          duedate: '02/03/2020',
+          duedate: 'Mar 22, 2020',
           priority: 'Important'
         }
       ]
@@ -41,7 +41,7 @@ let projectsModule = (function(){
         {
           title: 'Todo 1 P3',
           description: 'First todo Project 3',
-          duedate: '02/03/2020',
+          duedate: 'Mar 31, 2020',
           priority: 'Important and urgent'
         }
       ]
@@ -64,7 +64,7 @@ let projectsModule = (function(){
       myprojects.push(newProject);
     },
     showTodos: function(projectparent) {
-      let todos = {};
+      var todos = {};
       todos = myprojects[projectparent].todos;
      
       return todos;
@@ -76,8 +76,9 @@ let projectsModule = (function(){
       newTodo.duedate = duedate;
       newTodo.priority = priority;
       
+      //revisar esta empujando al proyecto y no al todo
       myprojects[project];
-      myprojects.push(newTodo);
+      myprojects[project].todos.push(newTodo);
       console.log(myprojects);
     }
   }

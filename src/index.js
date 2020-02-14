@@ -1,25 +1,30 @@
 import './style.css';
 import { projectsModule } from './modules/projects';
 
+let date;
+let chooseproject;
 
 document.addEventListener('DOMContentLoaded', function() {
-  var date = document.querySelector('.datepicker');
+  date = document.querySelector('.datepicker');
   var instances = M.Datepicker.init(date, {});
-  console.log(date);
+  //console.log(date);
 });
 document.addEventListener('DOMContentLoaded', function() {
-  var chooseproject = document.querySelectorAll('.dropdown-trigger');
+   chooseproject = document.querySelectorAll('.dropdown-trigger');
   var instances = M.Dropdown.init(chooseproject, []);
+  //console.log(chooseproject);
 });
 
 document.getElementById('addpro').onclick = () => {
   projectsModule.addNewProject(); 
   addNewProjecttoList();
+  projectLisLi();
 };
   const showprojects = document.getElementById('showprojects').getElementsByTagName('ul')[0];
-  let proyectos = projectsModule.showProjects();
+  //let proyectos = projectsModule.showProjects();
   
   function defaultProjects() {
+    let proyectos = projectsModule.showProjects();
     for (let i=0; i< proyectos.length; i++){
       let newA = document.createElement('a');
       newA.innerHTML = proyectos[i].name;
@@ -47,12 +52,12 @@ document.getElementById('addpro').onclick = () => {
 
   defaultProjects();
 
-
+let proyectos = projectsModule.showProjects();
 for (let i=0; i< proyectos.length; i++){
-  let index = 'Project'+i;
+  
   document.getElementById(i).onclick = () => {
      if (todoInfo.hasChildNodes()){
-      let count = todoInfo.childElementCount;
+      //let count = todoInfo.childElementCount;
       while(todoInfo.hasChildNodes()){
       todoInfo.removeChild(todoInfo.childNodes[0]);
       }
@@ -94,12 +99,20 @@ function todos(index) {
 
 // list of projects dropdown
 
- let proclist = document.getElementById('dropdown1');
- projectLisLi();
+
+projectLisLi();
  
 function projectLisLi() {
-
- for (let i=0; i < proyectos.length; i++){
+  let proclist = document.getElementById('dropdown1');
+  let proyectoss = projectsModule.showProjects();
+  
+  if (proclist.hasChildNodes()){
+    while(proclist.hasChildNodes()){
+    proclist.removeChild(proclist.childNodes[0]);
+   }
+  
+  } 
+ for (let i=0; i < proyectoss.length; i++){
   let li = document.createElement('li');
   //li.innerHTML = 'Project'+i;
   let a = document.createElement('a');
@@ -113,7 +126,24 @@ function projectLisLi() {
 // create a todo
 
 document.getElementById('submit').onclick = () => {
-
+  let chosenproject = chooseproject.value;
+  let title = document.getElementById('title').value;
+  let description = document.getElementById('description').value;
+  let duedate = date.value;
+  let priority = document.querySelector('.priority:checked').value;
+  var ok = true;
+  var msg = 'Please enter all the information for the Todo:\n';
+  
+  if(chosenproject === '' || title === '' || description === '' || duedate === '')
+  {
+    ok = false;
+    
+  }
+   if(ok == false){
+    alert(msg);
+  return ok;
+  }
+  //console.log(chooseproject);
+  projectsModule.addNewTodo(chosenproject, title, description, duedate, priority);
 }
 
-projectsModule.addNewTodo(2, 'Todo Good', 'very good', '12/04/2020', 'Important');
