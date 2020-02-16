@@ -59,9 +59,7 @@ let projectsModule = (function(){
     addNewProject: function() {
       
       var proLength = 0;
-      
-      //if(localStorage.getItem('proyectos')){
-        //myprojects = JSON.parse(localStorage.getItem('proyectos'));
+     
         myprojects = JSON.parse(localStorage.getItem('proyectos'));
 
         proLength = myprojects.length;
@@ -70,12 +68,12 @@ let projectsModule = (function(){
       
         var newProject = { };
         newProject.name = 'Project'+proLength;
-        newProject.todos = {};
+        newProject.todos = [];
         
         myprojects.push(newProject);
         
         localStorage.setItem('proyectos', JSON.stringify(myprojects));
-        console.log(myprojects);
+        //console.log(myprojects);
       
       
     },
@@ -86,16 +84,17 @@ let projectsModule = (function(){
       return todos;
     },
     addNewTodo: function(project, title, description, duedate, priority) {
+      myprojects = JSON.parse(localStorage.getItem('proyectos'));
       var newTodo = { };
       newTodo.title = title;
       newTodo.description = description;
       newTodo.duedate = duedate;
       newTodo.priority = priority;
-      
-      //revisar esta empujando al proyecto y no al todo
+      project--;
       myprojects[project];
       myprojects[project].todos.push(newTodo);
-      console.log(myprojects);
+      localStorage.setItem('proyectos', JSON.stringify(myprojects));
+      console.log(myprojects[project]);
     }
   }
   

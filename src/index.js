@@ -21,8 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, {});
+   chooseproject = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(chooseproject, {});
+  //console.log(chooseproject);
 });
 
 projectLisLi();
@@ -126,11 +127,9 @@ function projectLisLi() {
   } 
  for (let i=0; i < proyectos.length; i++){
   let option = document.createElement('option');
-  let p = i +1;
-  let a = document.createElement('a');
+  let p = i +1; 
   option.innerHTML = 'Project'+p;
-  option.value = 'Project'+p;
-  //li.appendChild(a);
+  option.value = p;
   proclist.appendChild(option);
  }
 }
@@ -147,7 +146,7 @@ document.getElementById('submit').onclick = () => {
   var ok = true;
   var msg = 'Please enter all the information for the Todo:\n';
   
-  if(chosenproject === '' || title === '' || description === '' || duedate === '')
+ /*  if(chosenproject === '' || title === '' || description === '' || duedate === '')
   {
     ok = false;
     
@@ -155,8 +154,9 @@ document.getElementById('submit').onclick = () => {
    if(ok == false){
     alert(msg);
   return ok;
-  }
-  //console.log(chooseproject);
+  } */
+  console.log(chosenproject);
   projectsModule.addNewTodo(chosenproject, title, description, duedate, priority);
 }
 
+projectsModule.addNewTodo(3,' title', 'description', '02-23-2020', 'urgent');
