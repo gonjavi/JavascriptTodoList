@@ -1,8 +1,13 @@
 import './style.css';
 import { projectsModule } from './modules/projects';
+import { stringify } from "querystring";
 
 let date;
 let chooseproject;
+let proyectos = projectsModule.showProjects();
+localStorage.setItem('proyectos', JSON.stringify(proyectos));
+proyectos = JSON.parse(localStorage.getItem('proyectos'));
+
 
 document.addEventListener('DOMContentLoaded', function() {
   date = document.querySelector('.datepicker');
@@ -15,13 +20,23 @@ document.addEventListener('DOMContentLoaded', function() {
   //console.log(chooseproject);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems, {});
+});
+
+projectLisLi();
 document.getElementById('addpro').onclick = () => {
   projectsModule.addNewProject(); 
   addNewProjecttoList();
+  location.reload();
   projectLisLi();
+  
+  
 };
+
   const showprojects = document.getElementById('showprojects').getElementsByTagName('ul')[0];
-  //let proyectos = projectsModule.showProjects();
+ 
   
   function defaultProjects() {
     let proyectos = projectsModule.showProjects();
@@ -36,7 +51,7 @@ document.getElementById('addpro').onclick = () => {
     }
   }
   function addNewProjecttoList() {
-    var proyectos = projectsModule.showProjects();
+    proyectos = JSON.parse(localStorage.getItem('proyectos'));
     var l = 0;
     l = proyectos.length -1;
     l++;
@@ -52,15 +67,15 @@ document.getElementById('addpro').onclick = () => {
 
   defaultProjects();
 
-let proyectos = projectsModule.showProjects();
-for (let i=0; i< proyectos.length; i++){
   
+
+for (let i=0; i< proyectos.length; i++){
   document.getElementById(i).onclick = () => {
      if (todoInfo.hasChildNodes()){
-      //let count = todoInfo.childElementCount;
       while(todoInfo.hasChildNodes()){
       todoInfo.removeChild(todoInfo.childNodes[0]);
       }
+     
     } 
     todos(i);
   
@@ -99,12 +114,9 @@ function todos(index) {
 
 // list of projects dropdown
 
-
-projectLisLi();
- 
 function projectLisLi() {
   let proclist = document.getElementById('dropdown1');
-  let proyectoss = projectsModule.showProjects();
+  proyectos = JSON.parse(localStorage.getItem('proyectos'));
   
   if (proclist.hasChildNodes()){
     while(proclist.hasChildNodes()){
@@ -112,13 +124,14 @@ function projectLisLi() {
    }
   
   } 
- for (let i=0; i < proyectoss.length; i++){
-  let li = document.createElement('li');
+ for (let i=0; i < proyectos.length; i++){
+  let option = document.createElement('option');
   let p = i +1;
   let a = document.createElement('a');
-  a.innerHTML = 'Project'+p;
-  li.appendChild(a);
-  proclist.appendChild(li);
+  option.innerHTML = 'Project'+p;
+  option.value = 'Project'+p;
+  //li.appendChild(a);
+  proclist.appendChild(option);
  }
 }
 

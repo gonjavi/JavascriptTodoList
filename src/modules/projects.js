@@ -1,6 +1,8 @@
+import { stringify } from "querystring";
+
 let projectsModule = (function(){
   let todos = {};
-  let myprojects = [
+  let myprojects = JSON.parse(localStorage.getItem('proyectos')) || [
     {
       name: 'Project1',
       todos: [
@@ -47,21 +49,35 @@ let projectsModule = (function(){
       ]
     },
   ];
+
+
   return{
     showProjects: function() {
+
       return myprojects;
     },
     addNewProject: function() {
+      
       var proLength = 0;
       
-      proLength = myprojects.length;
-      proLength += 1;    
-    
-      var newProject = { };
-      newProject.name = 'Project'+proLength;
-      newProject.todos = {};
+      //if(localStorage.getItem('proyectos')){
+        //myprojects = JSON.parse(localStorage.getItem('proyectos'));
+        myprojects = JSON.parse(localStorage.getItem('proyectos'));
+
+        proLength = myprojects.length;
+        proLength += 1; 
+         
       
-      myprojects.push(newProject);
+        var newProject = { };
+        newProject.name = 'Project'+proLength;
+        newProject.todos = {};
+        
+        myprojects.push(newProject);
+        
+        localStorage.setItem('proyectos', JSON.stringify(myprojects));
+        console.log(myprojects);
+      
+      
     },
     showTodos: function(projectparent) {
       var todos = {};
