@@ -25,6 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
   var instances = M.FormSelect.init(chooseproject, {});
   //console.log(chooseproject);
 });
+let selected;
+document.querySelector('select').addEventListener('change',function(){
+   selected = this.value;
+   console.log(selected);
+  
+});
+
 
 projectLisLi();
 document.getElementById('addpro').onclick = () => {
@@ -159,4 +166,7 @@ document.getElementById('submit').onclick = () => {
   projectsModule.addNewTodo(chosenproject, title, description, duedate, priority);
 }
 
-projectsModule.addNewTodo(3,' title', 'description', '02-23-2020', 'urgent');
+
+//projectsModule.addNewTodo(3,' title', 'description', '02-23-2020', 'urgent');
+
+//projectsModule.deleteProject(0);

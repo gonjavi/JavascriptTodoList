@@ -94,7 +94,12 @@ let projectsModule = (function(){
       myprojects[project];
       myprojects[project].todos.push(newTodo);
       localStorage.setItem('proyectos', JSON.stringify(myprojects));
-      console.log(myprojects[project]);
+      //console.log(myprojects[project]);
+    },
+    deleteProject: function(project) {
+      myprojects = JSON.parse(localStorage.getItem('proyectos'));
+      myprojects.splice(project,1);
+      localStorage.setItem('proyectos', JSON.stringify(myprojects));
     }
   }
   
