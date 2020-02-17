@@ -12,12 +12,10 @@ proyectos = JSON.parse(localStorage.getItem('proyectos'));
 document.addEventListener('DOMContentLoaded', function() {
   date = document.querySelector('.datepicker');
   var instances = M.Datepicker.init(date, {});
-  //console.log(date);
 });
 document.addEventListener('DOMContentLoaded', function() {
    chooseproject = document.querySelectorAll('.dropdown-trigger');
   var instances = M.Dropdown.init(chooseproject, []);
-  //console.log(chooseproject);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -25,20 +23,33 @@ document.addEventListener('DOMContentLoaded', function() {
   var instances = M.FormSelect.init(chooseproject, {});
 });
 let selectedPro;
-document.querySelector('select').addEventListener('change',function(){
+document.getElementById('dropdown1').addEventListener('change',function(){
    selectedPro = this.value;
 });
 let selectedProDelete;
 document.getElementById('dropdown2').addEventListener('change', function(){
   selectedProDelete = this.value;
-  console.log(selectedProDelete);
 });
 
 
 projectLisLi();
 document.getElementById('addpro').onclick = () => {
-  projectsModule.addNewProject(); 
-  addNewProjecttoList();
+  let pname = document.getElementById('pname').value;
+  var ok = true;
+  var msg = 'Please enter the project name:\n';
+  
+  if(pname === '')
+  {
+    ok = false;
+    
+  }
+   if(ok == false){
+    alert(msg);
+  return ok;
+  }
+  
+  let index = projectsModule.addNewProject(pname); 
+  addNewProjecttoList(pname, index);
   location.reload();
   projectLisLi();
   deleteProject(); 
@@ -59,16 +70,13 @@ document.getElementById('addpro').onclick = () => {
       showprojects.appendChild(n);
     }
   }
-  function addNewProjecttoList() {
+  function addNewProjecttoList(pname, index) {
     proyectos = JSON.parse(localStorage.getItem('proyectos'));
-    var l = 0;
-    l = proyectos.length -1;
-    l++;
     var newA = document.createElement('a');
-    newA.innerHTML = 'Project'+[l];
+    newA.innerHTML = pname;
     let n = document.createElement('li');
     n.appendChild(newA);
-    n.id = l;
+    n.id = index;
     n.style.color =' black';
     showprojects.appendChild(n);
     showprojects.removeChild(showprojects.childNodes[0]);
@@ -91,9 +99,9 @@ let todoInfo = document.createElement('div');
 
 function todos(index) {
   let todos = projectsModule.showTodos(index);
-  
+  proyectos = JSON.parse(localStorage.getItem('proyectos'));
   let divprotitle = document.getElementById('protitle');
-  divprotitle .innerHTML = 'Project'+[index+1];
+  divprotitle .innerHTML = proyectos[index].name;
   
   
   for (let i=0; i< todos.length; i++){
@@ -123,14 +131,15 @@ function projectLisLi() {
    }
   
   } 
- for (let i=0; i < proyectos.length; i++){
-  let option = document.createElement('option');
-  let p = i +1; 
-  option.innerHTML = 'Project'+p;
-  option.value = p;
-  proclist.appendChild(option);
- }
+  proyectos.forEach(function(proyecto){
+    var option1 = document.createElement('option');
+    option1.innerHTML = proyecto.name;
+    option1.value = proyectos.indexOf(proyecto);
+    proclist.appendChild(option1);
+   
+  })
 }
+
 // create a todo
 document.getElementById('submit').onclick = () => {
   let title = document.getElementById('title').value;
@@ -149,10 +158,12 @@ document.getElementById('submit').onclick = () => {
     alert(msg);
   return ok;
   }
-
+  
   projectsModule.addNewTodo(selectedPro, title, description, duedate, priority);
 }
+
 deleteProject();
+
 function deleteProject() {
   let proclist1 = document.getElementById('dropdown2');
   proyectos = JSON.parse(localStorage.getItem('proyectos'));
@@ -162,16 +173,16 @@ function deleteProject() {
       proclist1.removeChild(proclist1.childNodes[0]);
     }
   } 
- for (let i = 0; i < proyectos.length; i++){
-  var option1 = document.createElement('option');
-  let p = i +1; 
-  option1.innerHTML = 'Project'+p;
-  option1.value = p;
-  proclist1.appendChild(option1);
- }
+  proyectos.forEach(function(proyecto){
+    var option1 = document.createElement('option');
+    option1.innerHTML = proyecto.name;
+    option1.value = proyectos.indexOf(proyecto);
+    proclist1.appendChild(option1);
+   
+  })
 }
-document.getElementById('delete').onclick = () => {
 
+document.getElementById('delete').onclick = () => {
   projectsModule.deleteProject(selectedProDelete);
   location.reload();
 }

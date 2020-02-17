@@ -56,7 +56,7 @@ let projectsModule = (function(){
 
       return myprojects;
     },
-    addNewProject: function() {
+    addNewProject: function(pname) {
       
       var proLength = 0;
      
@@ -67,14 +67,15 @@ let projectsModule = (function(){
          
       
         var newProject = { };
-        newProject.name = 'Project'+proLength;
+        newProject.name = pname;
         newProject.todos = [];
         
         myprojects.push(newProject);
         
         localStorage.setItem('proyectos', JSON.stringify(myprojects));
-        //console.log(myprojects);
-      
+        myprojects = JSON.parse(localStorage.getItem('proyectos'));
+        let index = myprojects.indexOf(pname);
+        return index;      
       
     },
     showTodos: function(projectparent) {
@@ -90,15 +91,12 @@ let projectsModule = (function(){
       newTodo.description = description;
       newTodo.duedate = duedate;
       newTodo.priority = priority;
-      project--;
       myprojects[project];
       myprojects[project].todos.push(newTodo);
       localStorage.setItem('proyectos', JSON.stringify(myprojects));
-      //console.log(myprojects[project]);
     },
     deleteProject: function(project) {
       myprojects = JSON.parse(localStorage.getItem('proyectos'));
-      project--;
       myprojects.splice(project,1);
       localStorage.setItem('proyectos', JSON.stringify(myprojects));
     }
