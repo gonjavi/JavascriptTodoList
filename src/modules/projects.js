@@ -98,6 +98,7 @@ let projectsModule = (function(){
     },
     deleteProject: function(project) {
       myprojects = JSON.parse(localStorage.getItem('proyectos'));
+      project--;
       myprojects.splice(project,1);
       localStorage.setItem('proyectos', JSON.stringify(myprojects));
     }

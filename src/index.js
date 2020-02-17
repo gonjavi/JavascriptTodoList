@@ -28,6 +28,11 @@ let selectedPro;
 document.querySelector('select').addEventListener('change',function(){
    selectedPro = this.value;
 });
+let selectedProDelete;
+document.getElementById('dropdown2').addEventListener('change', function(){
+  selectedProDelete = this.value;
+  console.log(selectedProDelete);
+});
 
 
 projectLisLi();
@@ -36,8 +41,7 @@ document.getElementById('addpro').onclick = () => {
   addNewProjecttoList();
   location.reload();
   projectLisLi();
-  
-  
+  deleteProject(); 
 };
 
   const showprojects = document.getElementById('showprojects').getElementsByTagName('ul')[0];
@@ -70,9 +74,7 @@ document.getElementById('addpro').onclick = () => {
     showprojects.removeChild(showprojects.childNodes[0]);
   }
 
-  defaultProjects();
-
-  
+  defaultProjects();  
 
 for (let i=0; i< proyectos.length; i++){
   document.getElementById(i).onclick = () => {
@@ -80,10 +82,8 @@ for (let i=0; i< proyectos.length; i++){
       while(todoInfo.hasChildNodes()){
       todoInfo.removeChild(todoInfo.childNodes[0]);
       }
-     
     } 
     todos(i);
-  
   };
 }
 const showtodos = document.getElementById('todos');
@@ -98,8 +98,7 @@ function todos(index) {
   
   for (let i=0; i< todos.length; i++){
     let title = document.createElement('h5');
-    title.innerHTML = todos[i].title;
-    
+    title.innerHTML = todos[i].title;    
     let p1 = document.createElement('p');
     let p2 = document.createElement('p');
     let p3 = document.createElement('p');
@@ -109,16 +108,11 @@ function todos(index) {
     todoInfo.appendChild(title);
     todoInfo.appendChild(p1);
     todoInfo.appendChild(p2);
-    todoInfo.appendChild(p3);
-    
+    todoInfo.appendChild(p3);    
     showtodos.appendChild(todoInfo);
-
   }
 }
-
-
 // list of projects dropdown
-
 function projectLisLi() {
   let proclist = document.getElementById('dropdown1');
   proyectos = JSON.parse(localStorage.getItem('proyectos'));
@@ -137,12 +131,8 @@ function projectLisLi() {
   proclist.appendChild(option);
  }
 }
-
-
 // create a todo
-
 document.getElementById('submit').onclick = () => {
-  let chosenproject = chooseproject.value;
   let title = document.getElementById('title').value;
   let description = document.getElementById('description').value;
   let duedate = date.value;
@@ -150,7 +140,7 @@ document.getElementById('submit').onclick = () => {
   var ok = true;
   var msg = 'Please enter all the information for the Todo:\n';
   
- /*  if(chosenproject === '' || title === '' || description === '' || duedate === '')
+  if(selectedPro === '' || title === '' || description === '' || duedate === '')
   {
     ok = false;
     
@@ -158,12 +148,30 @@ document.getElementById('submit').onclick = () => {
    if(ok == false){
     alert(msg);
   return ok;
-  } */
+  }
 
   projectsModule.addNewTodo(selectedPro, title, description, duedate, priority);
 }
+deleteProject();
+function deleteProject() {
+  let proclist1 = document.getElementById('dropdown2');
+  proyectos = JSON.parse(localStorage.getItem('proyectos'));
+  
+  if (proclist1.hasChildNodes()){
+    while(proclist1.hasChildNodes()){
+      proclist1.removeChild(proclist1.childNodes[0]);
+    }
+  } 
+ for (let i = 0; i < proyectos.length; i++){
+  var option1 = document.createElement('option');
+  let p = i +1; 
+  option1.innerHTML = 'Project'+p;
+  option1.value = p;
+  proclist1.appendChild(option1);
+ }
+}
+document.getElementById('delete').onclick = () => {
 
-
-//projectsModule.addNewTodo(3,' title', 'description', '02-23-2020', 'urgent');
-
-//projectsModule.deleteProject(0);
+  projectsModule.deleteProject(selectedProDelete);
+  location.reload();
+}
