@@ -23,13 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
    chooseproject = document.querySelectorAll('select');
   var instances = M.FormSelect.init(chooseproject, {});
-  //console.log(chooseproject);
 });
-let selected;
+let selectedPro;
 document.querySelector('select').addEventListener('change',function(){
-   selected = this.value;
-   console.log(selected);
-  
+   selectedPro = this.value;
 });
 
 
@@ -162,8 +159,8 @@ document.getElementById('submit').onclick = () => {
     alert(msg);
   return ok;
   } */
-  console.log(chosenproject);
-  projectsModule.addNewTodo(chosenproject, title, description, duedate, priority);
+
+  projectsModule.addNewTodo(selectedPro, title, description, duedate, priority);
 }
 
 
