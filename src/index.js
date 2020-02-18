@@ -1,26 +1,12 @@
 import { stringify } from 'querystring';
 import { projectsModule } from './modules/projects';
+import init from './modules/init';
 
-let date;
-let chooseproject;
+const date = init();
 let proyectos = projectsModule.showProjects();
 localStorage.setItem('proyectos', JSON.stringify(proyectos));
 proyectos = JSON.parse(localStorage.getItem('proyectos'));
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  date = document.querySelector('.datepicker');
-  var instances = M.Datepicker.init(date, {});
-});
-document.addEventListener('DOMContentLoaded', function () {
-   chooseproject = document.querySelectorAll('.dropdown-trigger');
-  const instances = M.Dropdown.init(chooseproject, []);
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-   chooseproject = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(chooseproject, {});
-});
 let selectedPro;
 document.getElementById('dropdown1').addEventListener('change', function () {
   selectedPro = this.value;
