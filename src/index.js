@@ -31,16 +31,15 @@ document.getElementById('dropdown2').addEventListener('change', function () {
 });
 
 document.getElementById('addpro').onclick = () => {
-  let pname = document.getElementById('pname').value;
-  var ok = true;
-  var msg = 'Please enter the project name:\n';
-  
+  const pname = document.getElementById('pname').value;
+  let ok = true;
+  const msg = 'Please enter the project name:\n';
   if (pname === '') {
     ok = false;
   }
   if (ok === false) {
     alert(msg);
-  return ok;
+    return ok;
   }
   let index = projectsModule.addNewProject(pname);
   addNewProjecttoList(pname, index);
@@ -95,7 +94,7 @@ function todos(index) {
   proyectos = JSON.parse(localStorage.getItem('proyectos'));
   const divprotitle = document.getElementById('protitle');
   divprotitle.innerHTML = proyectos[index].name;
-  for (let i = 0; i < todos.length;  i += 1) {
+  for (let i = 0; i < todos.length; i += 1) {
     const title = document.createElement('h5');
     title.innerHTML = todos[i].title;
     const p1 = document.createElement('p');
@@ -125,8 +124,7 @@ function projectLisLi() {
     let option1 = document.createElement('option');
     option1.innerHTML = proyecto.name;
     option1.value = proyectos.indexOf(proyecto);
-    proclist.appendChild(option1);
-   
+    proclist.appendChild(option1);   
   });
 }
 projectLisLi();
