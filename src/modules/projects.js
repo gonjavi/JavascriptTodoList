@@ -1,4 +1,5 @@
-import { stringify } from "querystring";
+// eslint-disable-next-line no-unused-vars
+import { stringify } from 'querystring';
 
 let projectsModule = (function(){
   let todos = {};
