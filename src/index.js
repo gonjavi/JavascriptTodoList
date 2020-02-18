@@ -1,82 +1,87 @@
-import { stringify } from 'querystring';
-import { projectsModule } from './modules/projects';
-import init from './modules/init';
+// import { stringify } from 'querystring';
+import {
+  showProjects,
+  addNewProject,
+  showTodos,
+  addNewTodo,
+  deleteProject,
+} from './modules/projects';
 
-const date = init();
-let proyectos = projectsModule.showProjects();
+let date;
+let chooseproject;
+let proyectos = showProjects();
 localStorage.setItem('proyectos', JSON.stringify(proyectos));
 proyectos = JSON.parse(localStorage.getItem('proyectos'));
 
-let selectedPro;
-document.getElementById('dropdown1').addEventListener('change', function () {
-  selectedPro = this.value;
+
+document.addEventListener('DOMContentLoaded', () => {
+  date = document.querySelector('.datepicker');
+  M.Datepicker.init(date, {});
 });
-let selectedProDelete;
-document.getElementById('dropdown2').addEventListener('change', function () {
-  selectedProDelete = this.value;
+document.addEventListener('DOMContentLoaded', () => {
+  chooseproject = document.querySelectorAll('.dropdown-trigger');
+  M.Dropdown.init(chooseproject, {});
 });
 
-document.getElementById('addpro').onclick = () => {
-  const pname = document.getElementById('pname').value;
-  let ok = true;
-  const msg = 'Please enter the project name:\n';
-  if (pname === '') {
-    ok = false;
-  }
-  if (ok === false) {
-    alert(msg);
-    return ok;
-  }
-  let index = projectsModule.addNewProject(pname);
-  addNewProjecttoList(pname, index);
-  window.location.reload();
-  projectLisLi();
-  return true;
-};
+document.addEventListener('DOMContentLoaded', () => {
+  chooseproject = document.querySelectorAll('select');
+  M.FormSelect.init(chooseproject, {});
+});
+let selectedPro;
+document.getElementById('dropdown1').addEventListener('change', () => {
+  selectedPro = document.getElementById('dropdown1').value;
+});
+let selectedProDelete;
+document.getElementById('dropdown2').addEventListener('change', () => {
+  selectedProDelete = document.getElementById('dropdown2').value;
+});
 
 const showprojects = document.getElementById('showprojects').getElementsByTagName('ul')[0];
 
 function defaultProjects() {
-  let proyectos = projectsModule.showProjects();
-    for (let i=0; i< proyectos.length; i += 1) {
-      let newA = document.createElement('a');
-      newA.innerHTML = proyectos[i].name;
-      let n = document.createElement('li');
-      n.appendChild(newA);
-      n.id = i;
-      n.style.color =' black';
-      showprojects.appendChild(n);
-    }
-  }
-  function addNewProjecttoList(pname, index) {
-    proyectos = JSON.parse(localStorage.getItem('proyectos'));
-    var newA = document.createElement('a');
-    newA.innerHTML = pname;
-    let n = document.createElement('li');
+  const proyectos = showProjects();
+  for (let i = 0; i < proyectos.length; i += 1) {
+    const newA = document.createElement('a');
+    newA.innerHTML = proyectos[i].name;
+    const n = document.createElement('li');
     n.appendChild(newA);
-    n.id = index;
+    n.id = i;
     n.style.color = 'black';
     showprojects.appendChild(n);
-    showprojects.removeChild(showprojects.childNodes[0]);
   }
+}
+function addNewProjecttoList(pname, index) {
+  proyectos = JSON.parse(localStorage.getItem('proyectos'));
+  const newA = document.createElement('a');
+  newA.innerHTML = pname;
+  const n = document.createElement('li');
+  n.appendChild(newA);
+  n.id = index;
+  n.style.color = 'black';
+  showprojects.appendChild(n);
+  showprojects.removeChild(showprojects.childNodes[0]);
+}
 
 defaultProjects();
+const showtodos = document.getElementById('todos');
+const todoInfo = document.createElement('div');
 
 for (let i = 0; i < proyectos.length; i += 1) {
+  // eslint-disable-next-line no-loop-func
   document.getElementById(i).onclick = () => {
-     if (todoInfo.hasChildNodes()){
+    if (todoInfo.hasChildNodes()) {
       while (todoInfo.hasChildNodes()) {
-      todoInfo.removeChild(todoInfo.childNodes[0]);
+        todoInfo.removeChild(todoInfo.childNodes[0]);
       }
-    } 
+    }
+    // eslint-disable-next-line no-use-before-define
     todos(i);
   };
 }
-const showtodos = document.getElementById('todos');
-let todoInfo = document.createElement('div');
+
 
 function todos(index) {
-  const todos = projectsModule.showTodos(index);
+  const todos = showTodos(index);
   proyectos = JSON.parse(localStorage.getItem('proyectos'));
   const divprotitle = document.getElementById('protitle');
   divprotitle.innerHTML = proyectos[index].name;
@@ -106,11 +111,11 @@ function projectLisLi() {
       proclist.removeChild(proclist.childNodes[0]);
     }
   }
-  proyectos.forEach(function(proyecto) {
-    let option1 = document.createElement('option');
+  proyectos.forEach((proyecto) => {
+    const option1 = document.createElement('option');
     option1.innerHTML = proyecto.name;
     option1.value = proyectos.indexOf(proyecto);
-    proclist.appendChild(option1);   
+    proclist.appendChild(option1);
   });
 }
 projectLisLi();
@@ -121,21 +126,20 @@ document.getElementById('submit').onclick = () => {
   const duedate = date.value;
   const priority = document.querySelector('.priority:checked').value;
   let ok = true;
-  const msg = 'Please enter all the information for the Todo:\n';
-
   if (selectedPro === '' || title === '' || description === '' || duedate === '') {
     ok = false;
   }
+  const alert = document.getElementById('alert');
   if (ok === false) {
-    alert(msg);
+    alert.innerHTML = 'Please enter all the information for the Todo\n';
     return ok;
   }
-
-  projectsModule.addNewTodo(selectedPro, title, description, duedate, priority);
+  addNewTodo(selectedPro, title, description, duedate, priority);
+  // alert.innerHTML = '';
   return true;
 };
 
-function deleteProject() {
+function showDeleteProject() {
   const proclist1 = document.getElementById('dropdown2');
   proyectos = JSON.parse(localStorage.getItem('proyectos'));
 
@@ -144,17 +148,36 @@ function deleteProject() {
       proclist1.removeChild(proclist1.childNodes[0]);
     }
   }
-  proyectos.forEach(function(proyecto) {
-    let option1 = document.createElement('option');
+  proyectos.forEach((proyecto) => {
+    const option1 = document.createElement('option');
     option1.innerHTML = proyecto.name;
     option1.value = proyectos.indexOf(proyecto);
     proclist1.appendChild(option1);
   });
 }
 
-deleteProject();
+showDeleteProject();
 
 document.getElementById('delete').onclick = () => {
-  projectsModule.deleteProject(selectedProDelete);
+  deleteProject(selectedProDelete);
   window.location.reload();
+};
+
+document.getElementById('addpro').onclick = () => {
+  const pname = document.getElementById('pname').value;
+  let ok = true;
+  if (pname === '') {
+    ok = false;
+  }
+  const alert = document.getElementById('alert1');
+  if (ok === false) {
+    alert.innerHTML = 'Please enter the project name:\n';
+    return ok;
+  }
+  // alert.innerHTML = '';
+  const index = addNewProject(pname);
+  addNewProjecttoList(pname, index);
+  window.location.reload();
+  projectLisLi();
+  return true;
 };
