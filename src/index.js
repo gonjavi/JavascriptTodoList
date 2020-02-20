@@ -1,11 +1,14 @@
-// import { stringify } from 'querystring';
+import $ from 'jquery';
 import {
   showProjects,
   addNewProject,
   showTodos,
   addNewTodo,
   deleteProject,
+  deleteTodo,
+  editTodo,
 } from './modules/projects';
+
 
 let date;
 let chooseproject;
@@ -13,11 +16,15 @@ let proyectos = showProjects();
 localStorage.setItem('proyectos', JSON.stringify(proyectos));
 proyectos = JSON.parse(localStorage.getItem('proyectos'));
 
+/* $(document).ready = () => {
+  $('.datepicker').datepicker('date', date);
+}; */
 
 document.addEventListener('DOMContentLoaded', () => {
   date = document.querySelector('.datepicker');
   M.Datepicker.init(date, {});
 });
+
 document.addEventListener('DOMContentLoaded', () => {
   chooseproject = document.querySelectorAll('.dropdown-trigger');
   M.Dropdown.init(chooseproject, {});
@@ -91,13 +98,24 @@ function todos(index) {
     const p1 = document.createElement('p');
     const p2 = document.createElement('p');
     const p3 = document.createElement('p');
+    const buttonEdit = document.createElement('a');
+    const button = document.createElement('button');
     p1.innerHTML = todos[i].description;
     p2.innerHTML = todos[i].duedate;
     p3.innerHTML = todos[i].priority;
+    buttonEdit.innerHTML = 'Edit todo';
+    buttonEdit.style.margin = '0 0 30px';
+    button.innerHTML = 'Delete todo';
+    button.style.margin = '0 0 30px';
+    buttonEdit.className = 'waves-effect waves-light btn modal-trigger';
+    button.className = 'waves-effect waves-light btn purple darken-1';
+    button.onclick = () => { deleteTodo(index, i); };
     todoInfo.appendChild(title);
     todoInfo.appendChild(p1);
     todoInfo.appendChild(p2);
     todoInfo.appendChild(p3);
+    todoInfo.appendChild(buttonEdit);
+    todoInfo.appendChild(button);
     showtodos.appendChild(todoInfo);
   }
 }
@@ -135,7 +153,6 @@ document.getElementById('submit').onclick = () => {
     return ok;
   }
   addNewTodo(selectedPro, title, description, duedate, priority);
-  // alert.innerHTML = '';
   return true;
 };
 
@@ -174,10 +191,13 @@ document.getElementById('addpro').onclick = () => {
     alert.innerHTML = 'Please enter the project name:\n';
     return ok;
   }
-  // alert.innerHTML = '';
   const index = addNewProject(pname);
   addNewProjecttoList(pname, index);
   window.location.reload();
   projectLisLi();
   return true;
 };
+
+// editTodo(0, 1, 'editado', 'description', ' may 25 2020', 'urgent');
+
+deleteTodo(0, 0);

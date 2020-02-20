@@ -1,5 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-import { stringify } from 'querystring';
 
 const showProjects = () => {
   const myprojects = JSON.parse(localStorage.getItem('proyectos')) || [
@@ -26,34 +24,11 @@ const showProjects = () => {
         },
       ],
     },
-    {
-      name: 'Project2',
-      todos: [
-        {
-          title: 'Todo 1 P2',
-          description: 'First todo Project 2',
-          duedate: 'Mar 22, 2020',
-          priority: 'Important',
-        },
-      ],
-    },
-    {
-      name: 'Project3',
-      todos: [
-        {
-          title: 'Todo 1 P3',
-          description: 'First todo Project 3',
-          duedate: 'Mar 31, 2020',
-          priority: 'Important and urgent',
-        },
-      ],
-    },
   ];
   return myprojects;
 };
 const addNewProject = (pname) => {
   const newProject = { };
-  // const todos = {};
   let myprojects = JSON.parse(localStorage.getItem('proyectos'));
   newProject.name = pname;
   newProject.todos = [];
@@ -85,6 +60,29 @@ const deleteProject = (project) => {
   myprojects.splice(project, 1);
   localStorage.setItem('proyectos', JSON.stringify(myprojects));
 };
+const deleteTodo = (project, todoindex) => {
+  const myprojects = JSON.parse(localStorage.getItem('proyectos'));
+  const keys = Object.entries(myprojects);
+  keys.forEach((proyecto) => {
+    proyecto.forEach((todos) => {
+      const keys1 = Object.entries(todos);
+      const [pro, toditos] = keys1;
+    });
+  });
+  localStorage.setItem('proyectos', JSON.stringify(myprojects));
+};
+
+const editTodo = (project, todo, title, description, duedate, priority) => {
+  const newTodo = { };
+  let myprojects = JSON.parse(localStorage.getItem('proyectos'));
+  myprojects = JSON.parse(localStorage.getItem('proyectos'));
+  newTodo.title = title;
+  newTodo.description = description;
+  newTodo.duedate = duedate;
+  newTodo.priority = priority;
+  myprojects[project].todos.push(newTodo.splice(todo, 1));
+  localStorage.setItem('proyectos', JSON.stringify(myprojects));
+};
 
 
 export {
@@ -93,4 +91,6 @@ export {
   showTodos,
   addNewTodo,
   deleteProject,
+  deleteTodo,
+  editTodo,
 };
