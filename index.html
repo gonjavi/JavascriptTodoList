@@ -38,7 +38,53 @@
                
                   <div class="col l6" id="todos">
                     <h4 id="protitle"></h4>
-                   
+                    <h6 class="center red-text" id="alert2"></h6>
+                   <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                      <div class="modal-content">
+                        <h4>Edit Todo</h4>
+                      </div>
+
+                      <div class="row" id="modal2">
+                      <div class="input-field col s5 row">
+                          <input type="text" id="title2" class="autocomplete">
+                          <label for="title2">title</label>                       
+                        </div>
+                        <div class="input-field col s5 row">
+                            <input type="text" id="description2" class="autocomplete">
+                            <label for="description2">description</label>                         
+                        </div>
+                        <div class="input-field col s5 row">
+                            <input type="text" id="duedate2" class="datepicker">
+                            <label for="duedate2">Due date</label>                         
+                        </div>
+                        <div class="input-field col s5 row">
+                          <p>
+                            <label>
+                              <input class="priority2" name="group2" type="radio" value="Important and urgent" checked />
+                              <span>Important and urgent</span>
+                            </label>
+                          </p>
+                          <p>
+                            <label>
+                              <input class="priority2" name="group2" type="radio" value="Important but not urgent" />
+                              <span>Important but not urgent</span>
+                            </label>
+                          </p> 
+                          <p>
+                            <label>
+                              <input class="priority2" name="group2" type="radio" value="Not urgent" />
+                              <span>Not urgent</span>
+                            </label>
+                            </p>                       
+                        </div>
+                      <button class="col s2 btn modal-close waves-effect btn waves-ligh" id="updateTodo" type="submit" >Submit
+                        <i class="material-icons right"></i>
+                    </button>  
+                    </div>
+
+
+                    </div>
                   </div>
                   <div class="col l6">
                     <form class="row">
