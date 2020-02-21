@@ -62,13 +62,7 @@ const deleteProject = (project) => {
 };
 const deleteTodo = (project, todoindex) => {
   const myprojects = JSON.parse(localStorage.getItem('proyectos'));
-  const keys = Object.entries(myprojects);
-  keys.forEach((proyecto) => {
-    proyecto.forEach((todos) => {
-      const keys1 = Object.entries(todos);
-      const [pro, toditos] = keys1;
-    });
-  });
+  myprojects[project].todos.splice(todoindex, 1);
   localStorage.setItem('proyectos', JSON.stringify(myprojects));
 };
 

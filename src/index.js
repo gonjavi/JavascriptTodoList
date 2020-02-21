@@ -1,4 +1,6 @@
-import $ from 'jquery';
+import 'materialize-css';
+import M from 'materialize-css/dist/js/materialize.min';
+
 import {
   showProjects,
   addNewProject,
@@ -103,13 +105,16 @@ function todos(index) {
     p1.innerHTML = todos[i].description;
     p2.innerHTML = todos[i].duedate;
     p3.innerHTML = todos[i].priority;
-    buttonEdit.innerHTML = 'Edit todo';
+    buttonEdit.innerHTML = 'Edit';
     buttonEdit.style.margin = '0 0 30px';
-    button.innerHTML = 'Delete todo';
+    button.innerHTML = 'Delete';
     button.style.margin = '0 0 30px';
     buttonEdit.className = 'waves-effect waves-light btn modal-trigger';
     button.className = 'waves-effect waves-light btn purple darken-1';
-    button.onclick = () => { deleteTodo(index, i); };
+    button.onclick = () => {
+      deleteTodo(index, i);
+      window.location.reload();
+    };
     todoInfo.appendChild(title);
     todoInfo.appendChild(p1);
     todoInfo.appendChild(p2);
@@ -200,4 +205,3 @@ document.getElementById('addpro').onclick = () => {
 
 // editTodo(0, 1, 'editado', 'description', ' may 25 2020', 'urgent');
 
-deleteTodo(0, 0);
