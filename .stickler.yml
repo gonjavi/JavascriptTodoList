@@ -8,6 +8,10 @@ linters:
 # add the files here you want to be ignored by stylelint
 files:
   ignore:
+      - 'bower_components/*'
+      - 'node_modules/*'
       - 'dist/*'
+      
+      
       
  
