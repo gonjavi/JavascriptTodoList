@@ -14,13 +14,17 @@ import {
 
 let date;
 let chooseproject;
+let valueModal;
+let project;
+let todo;
 let proyectos = showProjects();
 localStorage.setItem('proyectos', JSON.stringify(proyectos));
 proyectos = JSON.parse(localStorage.getItem('proyectos'));
 
-/* $(document).ready = () => {
-  $('.datepicker').datepicker('date', date);
-}; */
+document.addEventListener('DOMContentLoaded', () => {
+  valueModal = document.querySelectorAll('.modal');
+  M.Modal.init(valueModal, {});
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   date = document.querySelector('.datepicker');
@@ -87,7 +91,10 @@ for (let i = 0; i < proyectos.length; i += 1) {
     todos(i);
   };
 }
-
+const proTodo = (index, todoindex) => {
+  project = index;
+  todo = todoindex;
+};
 
 function todos(index) {
   const todos = showTodos(index);
@@ -116,6 +123,9 @@ function todos(index) {
       deleteTodo(index, i);
       window.location.reload();
     };
+    buttonEdit.onclick = () => {
+      proTodo(index, i);
+    };
     todoInfo.appendChild(title);
     todoInfo.appendChild(p1);
     todoInfo.appendChild(p2);
@@ -125,7 +135,26 @@ function todos(index) {
     showtodos.appendChild(todoInfo);
   }
 }
-// list of projects dropdown
+
+document.getElementById('updateTodo').onclick = () => {
+  const title = document.getElementById('title2').value;
+  const description = document.getElementById('description2').value;
+  const duedate = document.getElementById('duedate2').value;
+  const priority = document.querySelector('.priority2:checked').value;
+  let ok = true;
+  if (title === '' || description === '' || duedate === '') {
+    ok = false;
+  }
+  const alert2 = document.getElementById('alert2');
+  if (ok === false) {
+    alert2.innerHTML = 'Please enter all the information to update the Todo\n';
+    return ok;
+  }
+  editTodo(project, todo, title, description, duedate, priority);
+  window.location.reload();
+  return true;
+};
+
 function projectLisLi() {
   const proclist = document.getElementById('dropdown1');
   proyectos = JSON.parse(localStorage.getItem('proyectos'));
@@ -143,7 +172,7 @@ function projectLisLi() {
   });
 }
 projectLisLi();
-// create a todo
+
 document.getElementById('submit').onclick = () => {
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;

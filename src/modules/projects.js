@@ -74,10 +74,9 @@ const editTodo = (project, todoindex, title, description, duedate, priority) => 
   newTodo.description = description;
   newTodo.duedate = duedate;
   newTodo.priority = priority;
-  myprojects[project].todos.splice(todoindex, 1,newTodo);
+  myprojects[project].todos.splice(todoindex, 1, newTodo);
   localStorage.setItem('proyectos', JSON.stringify(myprojects));
 };
-
 
 export {
   showProjects,
