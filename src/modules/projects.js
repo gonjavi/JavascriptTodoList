@@ -10,18 +10,6 @@ const showProjects = () => {
           duedate: 'Mar 19, 2020',
           priority: 'Important but not urgent',
         },
-        {
-          title: 'Next month',
-          description: 'Second todo project 1',
-          duedate: 'Apr 19, 2020',
-          priority: 'Important and urgent',
-        },
-        {
-          title: 'Next year',
-          description: 'Third todo project 1',
-          duedate: 'Mar 19, 2021',
-          priority: 'Important',
-        },
       ],
     },
   ];
