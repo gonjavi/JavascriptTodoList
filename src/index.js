@@ -1,3 +1,5 @@
+import './style.css';
+
 import 'materialize-css';
 import M from 'materialize-css/dist/js/materialize.min';
 
@@ -11,8 +13,8 @@ import {
   editTodo,
 } from './modules/projects';
 
-
 let date;
+let date2;
 let chooseproject;
 let valueModal;
 let project;
@@ -27,8 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  date = document.querySelector('.datepicker');
+  date = document.getElementById('duedate');
   M.Datepicker.init(date, {});
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  date2 = document.getElementById('duedate2');
+  M.Datepicker.init(date2, {});
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -104,6 +111,7 @@ function todos(index) {
   for (let i = 0; i < todos.length; i += 1) {
     const title = document.createElement('h5');
     title.innerHTML = todos[i].title;
+    title.className = 'purple-text';
     const p1 = document.createElement('p');
     const p2 = document.createElement('p');
     const p3 = document.createElement('p');
@@ -137,12 +145,12 @@ function todos(index) {
 }
 
 document.getElementById('updateTodo').onclick = () => {
-  const title = document.getElementById('title2').value;
-  const description = document.getElementById('description2').value;
-  const duedate = document.getElementById('duedate2').value;
-  const priority = document.querySelector('.priority2:checked').value;
+  const title2 = document.getElementById('title2').value;
+  const description2 = document.getElementById('description2').value;
+  const duedate2 = document.getElementById('duedate2').value;
+  const priority2 = document.querySelector('.priority2:checked').value;
   let ok = true;
-  if (title === '' || description === '' || duedate === '') {
+  if (title2 === '' || description2 === '' || duedate2 === '') {
     ok = false;
   }
   const alert2 = document.getElementById('alert2');
@@ -150,7 +158,7 @@ document.getElementById('updateTodo').onclick = () => {
     alert2.innerHTML = 'Please enter all the information to update the Todo\n';
     return ok;
   }
-  editTodo(project, todo, title, description, duedate, priority);
+  editTodo(project, todo, title2, description2, duedate2, priority2);
   window.location.reload();
   return true;
 };
@@ -176,7 +184,7 @@ projectLisLi();
 document.getElementById('submit').onclick = () => {
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
-  const duedate = date.value;
+  const duedate = document.getElementById('duedate').value;
   const priority = document.querySelector('.priority:checked').value;
   let ok = true;
   if (selectedPro === '' || title === '' || description === '' || duedate === '') {
