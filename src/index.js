@@ -110,6 +110,7 @@ function todos(index) {
     button.innerHTML = 'Delete';
     button.style.margin = '0 0 30px';
     buttonEdit.className = 'waves-effect waves-light btn modal-trigger';
+    buttonEdit.href = '#modal1';
     button.className = 'waves-effect waves-light btn purple darken-1';
     button.onclick = () => {
       deleteTodo(index, i);
@@ -202,6 +203,3 @@ document.getElementById('addpro').onclick = () => {
   projectLisLi();
   return true;
 };
-
-// editTodo(0, 1, 'editado', 'description', ' may 25 2020', 'urgent');
-

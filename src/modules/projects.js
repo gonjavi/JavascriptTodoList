@@ -66,7 +66,7 @@ const deleteTodo = (project, todoindex) => {
   localStorage.setItem('proyectos', JSON.stringify(myprojects));
 };
 
-const editTodo = (project, todo, title, description, duedate, priority) => {
+const editTodo = (project, todoindex, title, description, duedate, priority) => {
   const newTodo = { };
   let myprojects = JSON.parse(localStorage.getItem('proyectos'));
   myprojects = JSON.parse(localStorage.getItem('proyectos'));
@@ -74,7 +74,7 @@ const editTodo = (project, todo, title, description, duedate, priority) => {
   newTodo.description = description;
   newTodo.duedate = duedate;
   newTodo.priority = priority;
-  myprojects[project].todos.push(newTodo.splice(todo, 1));
+  myprojects[project].todos.splice(todoindex, 1,newTodo);
   localStorage.setItem('proyectos', JSON.stringify(myprojects));
 };
 
