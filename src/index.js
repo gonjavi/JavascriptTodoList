@@ -157,9 +157,12 @@ document.getElementById('updateTodo').onclick = () => {
   const alert2 = document.getElementById('alert2');
   if (ok === false) {
     alert2.innerHTML = 'Please enter all the information to update the Todo\n';
+    alert2.className = 'red-text';
     return ok;
   }
   editTodo(project, todo, title2, description2, duedate2, priority2);
+  alert2.innerHTML = 'Todo saved successfully\n';
+  alert2.className = 'green-text';
   window.location.reload();
   return true;
 };
@@ -194,9 +197,12 @@ document.getElementById('submit').onclick = () => {
   const alert = document.getElementById('alert');
   if (ok === false) {
     alert.innerHTML = 'Please enter all the information for the Todo\n';
+    alert.className = 'red-text';
     return ok;
   }
   addNewTodo(selectedPro, title, description, duedate, priority);
+  alert.innerHTML = 'Todo saved successfully\n';
+  alert.className = 'green-text';
   return true;
 };
 
