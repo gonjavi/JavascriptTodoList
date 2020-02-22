@@ -47,10 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
   chooseproject = document.querySelectorAll('select');
   M.FormSelect.init(chooseproject, {});
 });
-let selectedPro;
+let selectedPro = 0;
 document.getElementById('dropdown1').addEventListener('change', () => {
   selectedPro = document.getElementById('dropdown1').value;
 });
+
 let selectedProDelete;
 document.getElementById('dropdown2').addEventListener('change', () => {
   selectedProDelete = document.getElementById('dropdown2').value;
@@ -59,7 +60,7 @@ document.getElementById('dropdown2').addEventListener('change', () => {
 const showprojects = document.getElementById('showprojects').getElementsByTagName('ul')[0];
 
 function defaultProjects() {
-  const proyectos = showProjects();
+  proyectos = JSON.parse(localStorage.getItem('proyectos'));
   for (let i = 0; i < proyectos.length; i += 1) {
     const newA = document.createElement('a');
     newA.innerHTML = proyectos[i].name;

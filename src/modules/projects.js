@@ -5,7 +5,7 @@ const showProjects = () => {
       name: 'Project1',
       todos: [
         {
-          title: 'next week',
+          title: 'Todo 1',
           description: 'First todo project 1',
           duedate: 'Mar 19, 2020',
           priority: 'Important but not urgent',
