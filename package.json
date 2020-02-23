@@ -1,0 +1,36 @@
+{
+  "name": "javascripttodolist",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gonjavi/JavascriptToDoList.git"
+  },
+  "keywords": [],
+  "author": "Gonzalo Javier Mancilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gonjavi/JavascriptToDoList/issues"
+  },
+  "homepage": "https://github.com/gonjavi/JavascriptToDoList#readme",
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "materialize": "^1.0.0",
+    "materialize-css": "^1.0.0"
+  }
+}

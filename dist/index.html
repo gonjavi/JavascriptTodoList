@@ -1,0 +1,163 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TodoList</title>
+    <meta name="author" content="Gonzalo Javier Mancilla">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  </head>
+  <body>
+    <div class="row"> 
+      <nav class="row col l2" id="showprojects">
+        <ul id="slide-out" class="purple lighten-5 sidenav sidenav-fixed">
+          <li><a href="#!" class=""></a></li>
+          <li> 
+            <div class="input-field col s6">
+              <input id="pname" type="text" class="validate">
+              <h6 class="center red-text" id="alert1"></h6>
+              <label for="pname">Project Name</label>
+            </div>
+          </li>
+          <li><button type="text" class="btn waves-effect waves-light center" id="addpro"> New Proyect</button></li>
+       </ul>
+       
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      
+      </nav>
+      <div class="row col l10">
+        <nav>
+            <div class="deep-purple  nav-wrapper">
+              <a href="#" class="brand-logo center">Javascript Todo List</a>
+              
+            </div>
+        </nav>
+        <main id="content">
+          <div class="container">
+            
+              <div class="row" id="clean">
+               
+                  <div class="col l6" id="todos">
+                    <h3 id="protitle"></h3>
+                    <h6 class="center red-text" id="alert2"></h6>
+                   <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                      <div class="modal-content">
+                        <h4>Edit Todo</h4>
+                      </div>
+
+                      <div class="row" id="modal2">
+                      <div class="input-field col s5 row">
+                          <input type="text" id="title2" class="autocomplete">
+                          <label for="title2">title</label>                       
+                        </div>
+                        <div class="input-field col s5 row">
+                            <input type="text" id="description2" class="autocomplete">
+                            <label for="description2">description</label>                         
+                        </div>
+                        <div class="input-field col s5 row">
+                            <input type="text" id="duedate2" class="datepicker">
+                            <label for="duedate2">Due date</label>                         
+                        </div>
+                        <div class="input-field col s5 row">
+                          <p>
+                            <label>
+                              <input class="priority2" name="group2" type="radio" value="Important and urgent" checked />
+                              <span>Important and urgent</span>
+                            </label>
+                          </p>
+                          <p>
+                            <label>
+                              <input class="priority2" name="group2" type="radio" value="Important but not urgent" />
+                              <span>Important but not urgent</span>
+                            </label>
+                          </p> 
+                          <p>
+                            <label>
+                              <input class="priority2" name="group2" type="radio" value="Not urgent" />
+                              <span>Not urgent</span>
+                            </label>
+                            </p>                       
+                        </div>
+                      <button class="col s2 btn modal-close waves-effect btn waves-ligh" id="updateTodo" type="submit" >Submit
+                        <i class="material-icons right"></i>
+                    </button>  
+                    </div>
+
+
+                    </div>
+                  </div>
+                  <div class="col l6">
+                    <form class="row">
+                      
+                      <div class="input-field col s8 row" >
+                        <h5>Choose project To add new Todo</h5>
+                        <select id='dropdown1'>
+                        </select>
+                      </div>
+
+                        <div class="input-field col s8 row">
+                          <input type="text" id="title" class="autocomplete">
+                          <label for="title">title</label>                       
+                        </div>
+                        <div class="input-field col s8 row">
+                            <input type="text" id="description" class="autocomplete">
+                            <label for="description">description</label>                         
+                        </div>
+                        <div class="input-field col s8 row">
+                            <input type="text" id="duedate" class="datepicker">
+                            <label for="duedate">Due date</label>                         
+                        </div>
+                        <div class="input-field col s8 row">
+                          <p>
+                            <label>
+                              <input class="priority" name="group1" type="radio" value="Important and urgent" checked />
+                              <span>Important and urgent</span>
+                            </label>
+                          </p>
+                          <p>
+                            <label>
+                              <input class="priority" name="group1" type="radio" value="Important but not urgent" />
+                              <span>Important but not urgent</span>
+                            </label>
+                          </p> 
+                          <p>
+                            <label>
+                              <input class="priority" name="group1" type="radio" value="Not urgent" />
+                              <span>Not urgent</span>
+                            </label>
+                            </p>                       
+                        </div>
+                        <button class="col s5 btn waves-effect waves-light" id="submit" type="submit" >Submit
+                            <i class="material-icons right"></i>
+                        </button>  
+                      </form>
+
+                      <h6 class="center" id="alert"></h6>
+                      
+                      <div class="input-field col s8 row" >
+                         <h5>Choose project To Delete</h5>
+                        <select id='dropdown2'>
+                        </select>
+                      </div>
+                      <button class="col s5 btn waves-effect waves-light" id="delete" type="submit">Delete Project
+                          <i class="material-icons right"></i>
+                      </button> 
+                    
+                  </div>
+                </div>
+          </div>
+        </main>
+        
+       
+      </div>
+      
+    </div>
+    <footer id="footer" class="col l8 offset-l2 ">
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+  </body>
+</html>
