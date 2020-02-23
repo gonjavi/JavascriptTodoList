@@ -8,7 +8,7 @@ The project proposed is in the link below:
 ## Author:
 <a href="https://github.com/gonjavi/">Gonzalo Javier Mancilla Paz</a> 
 <h2>Live version:</h2> 
-<a href="#">https://dontforgettoupdate/</a>
+<a href="https://cdn.statically.io/gh/gonjavi/JavascriptTodoList/ca7abbdb8c3943022f4f7b8abfa96c4bf7703dec/dist/index.html?group1=Not+urgent">Todolist.co</a>
 
 ## Tools Used
 ```bash
