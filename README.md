@@ -58,6 +58,12 @@ Open the app on the browser
 - To check the to-do created, click on the project on the left hand side and the lists of to-dos will appear in the white space in the middle column.
 
 
+## Future Updates/Improvements
+
+- Update the design
+- Hide the todo's form
+- Add a New todo button
+- Display the todo's form only when click on add new todo
 
 ## 🤝 Contributing
 
