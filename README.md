@@ -1,8 +1,8 @@
 # JavascriptTodoList
 
-This project is a basic todo list app developed with JavaScript, which includes: creating new projects, and todos dynamically for each project. The todos include the properties: title, description, due date, and priority.
+This project is a basic To-Do List app developed with JavaScript. Features includes the ability to create new projects and todos for each project. Each to-do includes title, description, due date, and priority properties.
 
-The project proposed is in the link below:
+The project proposed is in the next link:
 <a href="https://www.theodinproject.com/courses/javascript/lessons/todo-list">PROJECT: TODO LIST</a>
 
 ![screenshot](./todo.png)
@@ -51,11 +51,11 @@ Open the app on the browser
 
 ### Usage
 
-- To create project you just type the name on the left hand side and and press the button new project.
+- To create a project, just type the name of the project on the left hand side and press the New Project button.
 
-- To create a Todo select the project on the right hand side and fill the information about it and click on create todo.
+- To create a to-do, select the project on the right hand side and fill in its information. Then click on Create To-Do.
 
-- To check the Todo created click on the project on the letf hand side and the lists of Todos will appear on the white space in the middle column.
+- To check the to-do created, click on the project on the left hand side and the lists of to-dos will appear in the white space in the middle column.
 
 
 
