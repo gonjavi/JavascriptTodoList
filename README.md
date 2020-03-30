@@ -60,10 +60,10 @@ Open the app on the browser
 
 ## Future Updates/Improvements
 
-- Update the design
+- Update the user interface design
 - Hide the todo's form
 - Add a New todo button
-- Display the todo's form only when click on add new todo
+- Display the todo's form only when the user clicks on add new todo
 
 ## 🤝 Contributing
 
