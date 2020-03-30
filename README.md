@@ -49,7 +49,7 @@ $ npm run build or $npm run watch
 ```
 Open the app on the browser
 
-### Usage
+## Usage
 
 - To create a project, just type the name of the project on the left hand side and press the New Project button.
 
