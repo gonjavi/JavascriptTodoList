@@ -10,8 +10,8 @@ The project proposed is in the next link:
 ## Author:
 👤 **Gonza Javier Mancilla**
 
-- Github: [@github/gonjavi](https://github.com/gonjavi)
-- Linkedin: [linkedin](https://www.linkedin.com/in/g-javier-mancilla-a686a9178/)
+- Github: [@gonjavi](https://github.com/gonjavi)
+- Linkedin: [@g-javier-mancilla](https://www.linkedin.com/in/g-mancillla)
 
 <h2>Live version:</h2> 
 <a href="https://cdn.statically.io/gh/gonjavi/JavascriptTodoList/ca7abbdb8c3943022f4f7b8abfa96c4bf7703dec/dist/index.html?group1=Not+urgent">Todolist.co</a>
