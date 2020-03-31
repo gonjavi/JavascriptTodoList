@@ -5,7 +5,7 @@ This project is a basic To-Do List app developed with JavaScript. Features inclu
 The project proposed is in the next link:
 <a href="https://www.theodinproject.com/courses/javascript/lessons/todo-list">PROJECT: TODO LIST</a>
 
-![screenshot](./todo.png)
+![screenshot](./todovideo.gif)
 
 ## Author:
 👤 **Gonza Javier Mancilla**
