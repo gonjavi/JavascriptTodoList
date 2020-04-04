@@ -57,12 +57,26 @@ Open the app on the browser
 
 - To check the to-do created, click on the project on the left hand side and the lists of to-dos will appear in the white space in the middle column.
 
+## Testing
+
+To run the test go to the command line, and type one of the commands:
+
+ - $yarn test 
+ 
+ - $npm run test
+  
+  You will see the test result:
+
+![screenshot](./todotest.png)
 
 ## Future Updates/Improvements
 
 - Update the user interface design
+
 - Hide the todo's form
+
 - Add a New todo button
+
 - Display the todo's form only when the user clicks on add new todo
 
 ## 🤝 Contributing
