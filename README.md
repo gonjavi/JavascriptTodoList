@@ -72,8 +72,11 @@ To run the test go to the command line, and type one of the commands:
 ## Future Updates/Improvements
 
 - Update the user interface design
+
 - Hide the todo's form
+
 - Add a New todo button
+
 - Display the todo's form only when the user clicks on add new todo
 
 ## 🤝 Contributing
