@@ -73,11 +73,11 @@ To run the test go to the command line, and type one of the commands:
 
 - Update the user interface design
 
-- Hide the todo's form
+- Hide the ToDo form
 
-- Add a New todo button
+- Add a New ToDo button
 
-- Display the todo's form only when the user clicks on add new todo
+- Display the ToDo form only when the user clicks on Add New ToDo
 
 ## 🤝 Contributing
 
