@@ -14,7 +14,7 @@ The project proposed is in the next link:
 - Linkedin: [@g-javier-mancilla](https://www.linkedin.com/in/g-mancillla)
 
 <h2>Live version:</h2> 
-<a href="https://gonjavi.github.io/JavascriptTodoList/">Todolist.co</a>
+<a href="https://gonjavi.github.io/JavascriptTodoList/">Live Demo Link</a>
 
 ## Tools Used
 ```bash
@@ -33,9 +33,7 @@ The project proposed is in the next link:
    Stickler
 ```
 
-  
-
-## Getting started
+ ## Getting started
 ```bash
 Create folder
 ```
